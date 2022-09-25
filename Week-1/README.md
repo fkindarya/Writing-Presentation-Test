@@ -173,7 +173,7 @@
     - `<time>`
 
 ### Deployment HTML dengan Netlify
-1. **Masuk** ke [netlify](https://www.app.netlify.com)
+1. **Masuk** ke [netlify](https://app.netlify.com/)
 2. **Login** menggunakan **akun _GitHub_**
 3. Klik **_New site from Git_**
 4. **_Link_** dengan **akun _GitHub_**

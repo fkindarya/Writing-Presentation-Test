@@ -356,3 +356,132 @@
     // {name: 'Kindarya', age: 20, city: 'Sidoarjo'}
     // {name: 'Pimiming', age: 19, city: 'Surabaya'}
     ```
+### Modules
+- **Modules** adalah **reusable code** yang dapat di **export** dari suatu file javascript dan di **import** ke file javascript yang lain.
+- **Reusable Code** adalah data yang dapat digunakan berulang kali.
+- **Data** yang dapat di **export** adalah **string**, **object**, **array**, **number**, **class**, hingga **method**.
+    #### Membuat Modules
+    1. Menambahkan **script attribute type** untuk modules pada file HTML.
+        ```
+        index.html
+        ----------
+
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        </head>
+        <body>
+            <script type="module" src="script.js"></script>
+        </body>
+        </html>
+        ```
+    2. Membuat javascript untuk melakukan export
+        ```
+        greetings.js
+        ------------
+
+        let shopName = 'Pimiming Garage';
+
+        function welcome(){
+            alert("Hello, Welcome to our Shop");
+        }
+
+        function exit(name){
+            alert(`Thank you for your purchase ${name}`);
+        }
+
+        export {
+            welcome as greet,
+            exit,
+        };
+        ```
+    3. Melakukan import pada file javascript utama
+        ```
+        script.js
+        ---------
+
+        import {
+            greet,
+            exit as goodBye,
+        } from 'greetings.js';
+
+        welcome(); // Output: Hello, Welcome to our Shop
+        goodBye('Fabyan); // Output: Thank you for your purchase Fabyan
+        ```
+    #### Export Default
+    - Export default dilakukan jika hanya **1 data** yang di **export**.
+        ```
+        greetings.js
+        -------------
+
+        let sayThanks = () => {
+            alert("Thank You, Have a Great Day");
+        }
+
+        export default sayThanks;
+
+        script.js
+        ---------
+
+        import sayThanks from 'greetings.js';
+
+        sayThanks(); // Output: Thank You, Have a Great Day
+        ```
+### Recursive
+- **Recursive** adalah **function** yang **memanggil dirinya sendiri** sampai kondisi tertentu.
+- Recursive biasa **digunakan** untuk **menyelesaikan** permasalahan matematika, fisika, kimia, dan yang **berhubungan** dengan **calculation**.
+    #### Struktur Recursive
+    ```
+    function recursive() {
+        // ...
+        recursive();
+        // ...
+    }
+    ```
+    - Recursive akan berhenti memanggil dirinya sendiri jika kondisi terpenuhi
+        ```
+        function recursive() {
+            if(condition) {
+                // stop calling itself
+                // ...
+            } else {
+                recursive();
+            }
+        }
+        ```
+    #### Ciri dari Recursive
+    1. Base Case, memiliki kondisi yang menyatakan kapan fungsi tersebut berhenti. Kondisi ini harus dapat dibuktikan akan tercapai, karena jika tidak tercapai maka kita tidak dapat membuktikan bahwa fungsi akan berhenti.
+    2. Recursive Case, fungsi memanggil dirinya sendiri sambil mengurangi atau memecahkan data masukan setiap panggilannya.
+    #### Contoh Kasus Recursive
+    1. Menghitung Mundur Number
+        ```
+        function countDown(fromNumber) {
+            console.log(fromNumber);
+
+            let nextNumber = fromNumber - 1;
+
+            if (nextNumber > 0) {
+                countDown(nextNumber);
+            }
+        }
+
+        countDown(3);
+        // Output:
+        // 3
+        // 2
+        // 1
+        ```
+    2. Mencari Hasil dari Nilai Pangkat
+        ```
+        function pow(x, n) {
+            if (n == 1) {
+                return x;
+            } else {
+                return x * pow(x, n - 1);
+            }
+        }
+
+        pow(2, 3); // Output: 8
+        ```

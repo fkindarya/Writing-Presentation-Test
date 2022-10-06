@@ -485,3 +485,100 @@
 
         pow(2, 3); // Output: 8
         ```
+### Asynchronous
+- Javascript adalah bahasa pemrograman **single-thread** yang artinya hanya dapat **mengeksekusi** satu task pada satu waktu atau biasa disebut **synchronous**.
+- **Asynchronous** mengizinkan komputer memproses **task yang lain sambil menunggu proses yang masih berlangsung**.
+- Kita dapat membuat **asynchronous** secara **simulasi** pada javascript dengan :
+    1. **Callback**
+    2. **Promises**
+    3. **Async / Await**
+    #### Callback
+    - **Callback function** adalah function yang kita letakkan di dalam argumen / parameter pada function, dan function tersebut akan dieksekusi setelah function pertama menyelesaikan tugasnya.
+        ```
+        cons addFunction = (number1, number2, callBack) => {
+            console.log(number1 + number2);
+            callBack();
+        }
+
+        const finishProcess = () => {
+            console.log('Done !');
+        }
+
+        addFunction(1, 2, finishProcess); 
+        // Output: 
+        // 3 
+        // Done !
+        ```
+    - Proses asynchronous identik dengan **delay**, dimana hasil dari proses tersebut membutuhkan **selang waktu tertentu** untuk menghasilkan output.
+    - Kita akan menemukan proses asynchronous pada proses **Ajax**, **komunikasi HTTP**, **Operasi file**, **timer**, dsb.
+    - Contoh program synchronous :
+        ```
+        let nama = () => {
+            console.log('Halo nama saya Fabyan');
+        }
+
+        let umur = () => {
+            console.log('umur saya 21');
+        }
+
+        let kota = () => {
+            console.log('saya tinggal di Sidoarjo');
+        }
+
+        nama();
+        umur();
+        kota();
+
+        // Output:
+        // Halo nama saya Fabyan
+        // umur saya 21
+        // saya tinggal di Sidoarjo
+        ```
+    - Pada asynchronous kita menggunakan **_setTimeout_** untuk simulasinya. Proses pada umur() kita lewati sambil menunggu selesai, program lanjut ke function kota().
+        ```
+        let nama = () => {
+            console.log('Halo nama saya Fabyan');
+        }
+
+        let umur = () => {
+            setTimeout(() => {
+                console.log('umur saya 21');
+            }, 3000)
+        }
+
+        let kota = () => {
+            nama();
+            umur();
+            console.log('saya tinggal di Sidoarjo');
+        }
+
+        kota();
+
+        // Output:
+        // Halo nama saya Fabyan
+        // saya tinggal di Sidoarjo
+        // umur saya 21
+        ```
+    #### Promises
+    - **Promise** merupakan salah satu fitur baru di **ES6**, biasa digunakan untuk melakukan **http request** / **fetch data** dari **API**.
+    - Dalam pengambilan data, promise memiliki 3 kemungkinan state, yaitu :
+        1. Pending
+        2. Fulfilled
+        3. Rejected
+        ```
+        let nontonFilm = () => {
+            new Promise((resolve, reject) => {
+                let condition = true;
+
+                if(condition){
+                    resolve('Jadi nonton film')
+                } else {
+                    reject('Tidak jadi nonton film')
+                }
+            })
+            .then(result => console.log(result))
+            .catch(error => console.log(error))
+        }
+
+        nontonFilm() // Output: Jadi nonton film
+        ```

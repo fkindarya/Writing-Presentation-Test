@@ -582,3 +582,59 @@
 
         nontonFilm() // Output: Jadi nonton film
         ```
+### Web Storage
+- **Web Storage** digunakan untuk **menyimpan data pengguna** seperti pencarian, artikel berita, dan lain-lain ke lokal (browser) menggunakan **cookies**, **local storage**, dan **session storage**. Data ini dimanfaatkan oleh situs web tersebut untuk **merekam kebiasaan pengguna** agar dapat **memberikan rekomendasi** sesuai kebiasaan pengguna tersebut.
+    #### Cookies
+    - Maksimum data yang dapat disimpan adalah 4 KB.
+    - Setiap kita mengakses situs web, cookies juga kembali dikirim sehingga memperlambat aplikasi web kamu dengan mengirimkan data yang sama.
+    - Cookies disertakan pada setiap _HTTP request_, sehingga mengirimkan data yang tidak dienkripsi melalui internet, maka saat kita ingin menyimpan data dalam cookies kita harus mengenkripsinya terlebih dahulu.
+    - Cookies memiliki tanggal kadaluarsa. Tanggal ini telah ditentukan sehingga _web browser_ bisa menghapus cookies jika tanggal sudah kadaluarsa atau tidak dibutuhkan.
+    #### Local Storage
+    - Menyimpan data tanpa tanggal kadaluarsa.
+    - Data tidak akan dihapus ketika _web browser_ ditutup dan akan tersedia seterusnya selama kita tidak menghapus _data local storage_ pada _web browser_.
+    - Dapat menyimpan data hingga 5 MB.
+    - Hanya dapat menyimpan data _string_.
+        ##### Menyimpan Data
+        - Untuk menyimpan data pada _local storage_ menggunakan method :
+            ```
+            localStorage.setItem('key', value);
+            ```
+        ##### Mengambil Data
+        - Untuk mengambil data pada _local storage_ menggunakan method :
+            ```
+            localStorage.getItem('key');
+            ```
+        ##### Menghapus Data
+        - Untuk menghapus data pada _local storage_ menggunakan method :
+            ```
+            // Menghapus key tertentu
+            localStorage.removeItem('key');
+
+            // Menghapus semua key
+            localStorage.clear();
+            ```
+    #### Session Storage
+    - Data yang disimpan pada _session storage_ akan terus tersimpan selama _browser_ terbuka dan tidak hilang jika laman di-reload.
+    - Membuka banyak tab/window dengan _URL_ yang sama, akan menciptakan _session storage_ yang berbeda di masing-masing _tab/window_.
+    - Menutup _tab/window_ akan mengakhiri _session_ dan menghapus data yang tersimpan di _session storage_ pada _tab/window_ tersebut.
+    - Dapat menyimpan data hingga 5 MB.
+    - Hanya dapat menyimpan data _string_.
+        ##### Menyimpan Data
+        - Untuk menyimpan data pada _session storage_ menggunakan method :
+            ```
+            sessionStorage.setItem('key', value);
+            ```
+        ##### Mengambil Data
+        - Untuk mengambil data pada _session storage_ menggunakan method :
+            ```
+            sessionStorage.getItem('key');
+            ```
+        ##### Menghapus Data
+        - Untuk menghapus data pada _session storage_ menggunakan method :
+            ```
+            // Menghapus key tertentu
+            sessionStorage.removeItem('key');
+
+            // Menghapus semua key
+            sessionStorage.clear();
+            ```

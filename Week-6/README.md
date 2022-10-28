@@ -355,3 +355,55 @@ const errorHandling = function(err, req, res, next) {
 
 app.use(errorHandling)
 ```
+## Design Database
+### Menentukan Entity
+Berikut adalah contoh studi kasus yang bisa dijadikan entity dalam database:
+- User
+- Film
+- Genre
+### Menentukan Attributes dari Entity
+```
+User
+id int NOT NULL
+name varchar(255)
+email varchar(255)
+password varchar(255)
+
+Film
+id int NOT NULL
+name varchar(255)
+release_date date
+
+Genre
+id int NOT NULL
+name varchar(255)
+```
+### Menentukan Relasi antar Entity
+- User & Film (Many to Many)
+- Film & Genre (Many to Many)
+```
+User
+id int NOT NULL
+name varchar(255)
+email varchar(255)
+password varchar(255)
+
+UserFilmFavorite
+id int NOT NULL
+userId int
+filmId int
+
+Film
+id int NOT NULL
+name varchar(255)
+release_date date
+
+FilmGenre
+id int NOT NULL
+filmId int
+genreId int
+
+Genre
+id int NOT NULL
+name varchar(255)
+```

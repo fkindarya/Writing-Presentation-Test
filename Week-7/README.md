@@ -78,5 +78,46 @@
         ```
     - **UPDATE** digunakan untuk melakukan perubahan dari kolom yang dipilih. Contoh :
         `UPDATE mahasiswas SET age = 22 WHERE id = 1`
-    - DELETE digunakan untuk menghapus data dalam table yang dipilih. Contoh :
+    - **DELETE** digunakan untuk menghapus data dalam table yang dipilih. Contoh :
         `DELETE FROM mahasiswas WHERE fullName = "Fabyan Kindarya"`
+    - **ORDER BY** digunakan untuk mengurutkan data yang ditampilkan secara **ASCENDING** atau **DESCENDING**. Contoh :
+        `SELECT * FROM mahasiswas WHERE NOT id = 1 ORBER BY id DESC`
+    - **GROUP BY** digunakan untuk menampilkan data berdasarkan kolom yang ditentukan. Contoh :
+        `SELECT * FROM mahasiswas WHERE NOT id = 1 GROUP BY name`
+    - **LIMIT** digunakan untuk membatasi jumlah data yang tampil. Contoh :
+        `SELECT * FROM mahasiswas LIMIT 2`
+## MySQL Lanjutan
+### Relations di SQL
+- One to One
+- One to Many
+- Many to Many
+### Database Normalization 
+- Merupakan teknik analisis data yang mengorganisasikan atribut - atribut data dengan cara mengelompokkan sehingga terbentuk entitas yang non-redundant, stabil dan fleksibel.
+- Tujuan :
+    - Menghilangkan redundan data pada database.
+    - Memudahkan jika ada perubahan struktur table database.
+    - Memperkecil pengaruh jika ada perubahan dari struktur table database.
+- Efek jika tidak melakukan normalisasi :
+    - INSERT Anomali, tidak memungkinkan memasukkan beberapa jenis data secara langsung.
+    - DELETE Anomali, kemungkinan terjadi penghapusan data yang harusnya tidak terhapus.
+    - UPDATE Anomali, nilai yang diubah menyebabkan inkonsistensi database.
+### Bentuk Database Normalization
+- First Normal Form (1NF)
+- Second Normal Form (2NF)
+- Third Normal Form (3NF)
+- EKNF
+- BCNF
+- 4NF
+- 5NF
+- DKNF
+- 6NF
+### Join Multiple Tables
+- **INNER JOIN** semua baris akan diambil dari kedua tabel yang akan di JOIN, selama kolom cocok dengan kondisi yang sudah ditentukan.
+- **LEFT JOIN** semua record dari table di sisi kiri JOIN statement akan dipilih, jika tidak cocok maka akan bernilai NULL.
+- **RIGHT JOIN** semua records dari table di sisi kiri JOIN statement akan dipilih, bahkan jika table di sebelah kiri tidak memiliki record yang cocok.
+### Aggregate Functions
+- **MAX** mengembalikan nilai terbesar dari kolom yang dipilih.
+- **MIN** mengembalikan nilai terkecil dari kolom yang dipilih.
+- **SUM** mengembalikan jumlah total kolom numerik.
+- **COUNT** mengembalikan jumlah baris yang cocok dengan kriteria yang ditentukan.
+- **AVG** mengembalikan nilai rata - rata kolom numerik.

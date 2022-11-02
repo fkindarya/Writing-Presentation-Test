@@ -121,3 +121,38 @@
 - **SUM** mengembalikan jumlah total kolom numerik.
 - **COUNT** mengembalikan jumlah baris yang cocok dengan kriteria yang ditentukan.
 - **AVG** mengembalikan nilai rata - rata kolom numerik.
+## Authentication & Authorization
+- **Authentication** proses pengenalan identitas user lalu diberikan akses sesuai dengan authorisasi yang diterima. 
+- **Authorization** proses penentuan hak akses terhadap user dalam mengambil atau melakukan suatu tindakan dalam sistem.
+### JSON Web Token (JWT)
+- Sebuah JSON Object sebagai cara aman untuk mewakili sekumpulan informasi antara dua pihak.
+- Token terdiri dari Header, Content dan Signature :
+    - Header
+        ```
+        {
+            "alg": "HS256",
+            "typ": "JWT"
+        }
+        ```
+    - Payload
+        ```
+        {
+            "id": 1,
+            "name": "Fabyan Kindarya",
+            "age": 21,
+            "phone_number": "085157766075"
+            "iat": 1516239022
+        }
+        ```
+    - Signature
+        ```
+        HMACSHA256(
+            BASE64URL(header).
+            BASE64URL(payload),
+            secret)
+        ```
+- Instalasi dan Cara Pakai
+    1. `npm install jsonwebtoken`
+    2. `const jwt = require("jsonwebtoken")`
+    3. `const token = jwt.sign({userData}, "key-ditulis-terserah")`
+    4. `res.json(token)`

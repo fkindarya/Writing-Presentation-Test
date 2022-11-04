@@ -156,3 +156,30 @@
     2. `const jwt = require("jsonwebtoken")`
     3. `const token = jwt.sign({userData}, "key-ditulis-terserah")`
     4. `res.json(token)`
+## Sequelize
+### Definisi
+- **Sequelize** adalah **ORM** (Object Relational Mapping) yang **berbasis promise**.
+- **Sequelize** mendukung sebagian besar **relational Database** seperti :
+    1. MySQL
+    2. PostgreSQL
+    3. MariaDB
+    4. SQLite
+    5. Microsoft SQL Server
+### Instalasi
+1. `npm install --save sequelize`
+2. `npm install --save mysql2`
+3. `npx sequelize-cli init`
+### Generate Model
+```
+npx sequelize-cli model:generate --name Todo --attributes title:string,description:string,startTime:date,status:string
+
+npx sequelize-cli db:migrate
+npx sequelize-cli db:migrate:undo
+```
+### Generate Seed
+```
+npx sequelize-cli seed:generate --name demo-todo
+
+npx sequelize-cli db:seed:all
+npx sequelize-cli db:seed:undo
+```
